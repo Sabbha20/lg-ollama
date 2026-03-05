@@ -6,3 +6,6 @@ langgraph
 langsmith
 pydantic
 ipykernel
+langchain-google-genai
+google
+google-genai
