@@ -7,11 +7,16 @@ Import and use: import my_tools
 """
 
 from langchain_core.tools import tool
+from dotenv import load_dotenv
+import os
 import requests
 
+load_dotenv()
 # =============================================================================
 # Weather Tools
 # =============================================================================
+
+WEATHER_API_KEY = os.getenv("WEATHER_API_KEY")
 
 @tool
 def get_weather(location:str) -> str:
@@ -27,8 +32,8 @@ def get_weather(location:str) -> str:
         Current weather information including temperature and conditions.
     """
     try:
-        url = f"https://wttr.in/{location}?format=j1"
-        response = requests.get(url, timeout=10)
+        url = f"https://api.weatherapi.com/v1/current.json?q={location}&key={WEATHER_API_KEY}"
+        response = requests.get(url, timeout=30)
 
         response.raise_for_status()
         data = response.json()
