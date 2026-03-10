@@ -26,12 +26,17 @@ def get_weather(location:str) -> str:
     Returns:
         Current weather information including temperature and conditions.
     """
-    
-    url = f"https://wttr.in/{location}?format=j1"
-    response = requests.get(url, timeout=10)
+    try:
+        url = f"https://wttr.in/{location}?format=j1"
+        response = requests.get(url, timeout=10)
 
-    response.raise_for_status()
-    data = response.json()
+        response.raise_for_status()
+        data = response.json()
+        print(f"[TOOL] get_weather ('location') -> '{location}'")
+
+    except Exception as e:
+        print(f"Exception has occured with error: {e}")
+        return f"Exception has occured with error: {e}"
 
     return data
 
