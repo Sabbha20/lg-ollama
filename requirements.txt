@@ -9,3 +9,9 @@ ipykernel
 langchain-google-genai
 google
 google-genai
+pymysql
+pymupdf4llm
+langgraph-checkpoint-sqlite
+langgraph-checkpoint-postgres
+psycopg
+psycopg-binary
